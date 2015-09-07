@@ -36,7 +36,7 @@ class IssuesScraper(Scraper):
                 "inserted_at": datetime.now(),
                 "title": self.html.unescape(item.title.text),
                 "created_at": parser.parse(item.pubdate.text),
-                "source": "berniesanders.com",
+                "site": "berniesanders.com",
                 "article_type": "Issues",
                 "description_html": item.description.text,
                 "description": self.html.unescape(

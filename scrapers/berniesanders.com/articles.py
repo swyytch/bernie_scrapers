@@ -61,7 +61,7 @@ class ArticlesScraper(Scraper):
             rec = {
                 "inserted_at": datetime.now(),
                 "created_at": parser.parse(article.time["datetime"]),
-                "source": "berniesanders.com",
+                "site": "berniesanders.com",
                 "type": "DemocracyDaily",
                 "excerpt_html": str(article.find(
                     "div", {"class": "excerpt"}).p),

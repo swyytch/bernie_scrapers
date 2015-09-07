@@ -29,7 +29,7 @@ allowed_keys = [
     "is_official",
     "attendee_count",
     "capacity",
-    "source"
+    "site"
 ]
 
 logging.basicConfig(format="%(asctime)s - %(levelname)s : %(message)s",
@@ -75,15 +75,27 @@ class EventScraper(Scraper):
                 "lat": float(result["latitude"])
             }
         }
-        result["source"] = "berniesanders.com"
+        # map any available address fields
         for k, v in address_map.iteritems():
             try:
                 result["venue"][v] = result[k]
             except KeyError:
                 pass
 
-        # parse datetime
+        # set sitename
+        result["site"] = "berniesanders.com"
+
+        # convert capacity and attendee_count to int's
+        for x in ["capacity", "attendee_count"]:
+            try:
+                result[x] = int(result[x])
+            except KeyError:
+                pass
+
+        # Convert str to datetime
         result["start_time"] = parser.parse(result["start_time"])
+        result["is_official"] = result["is_official"] == "1"
+        # remove any unneeded keys
         keys = result.keys()
         for k in keys:
             if k not in allowed_keys:
@@ -100,7 +112,7 @@ class EventScraper(Scraper):
             rec = self.translate(result)
             query = {
                 "original_id": rec["original_id"],
-                "source": "berniesanders.com"
+                "site": "berniesanders.com"
             }
             if self.db.events.find(query).count() > 0:
                 msg = "Updating record for '{0}'."
