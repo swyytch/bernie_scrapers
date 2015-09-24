@@ -29,7 +29,8 @@ allowed_keys = [
     "is_official",
     "attendee_count",
     "capacity",
-    "site"
+    "site",
+    "lang"
 ]
 
 logging.basicConfig(format="%(asctime)s - %(levelname)s : %(message)s",
@@ -84,7 +85,7 @@ class EventScraper(Scraper):
 
         # set sitename
         result["site"] = "berniesanders.com"
-
+        result["lang"] = "en"
         # convert capacity and attendee_count to int's
         for x in ["capacity", "attendee_count"]:
             try:

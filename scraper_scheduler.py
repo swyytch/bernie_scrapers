@@ -65,7 +65,7 @@ class Scheduler(object):
         self.con.wait(container)
 
     def go(self):
-        d = "/opt/bernie/scrapers/"
+        d = "/opt/bernie/bernie_scraper/scrapers/"
         subdirs = filter(os.path.isdir,
                          [os.path.join(d, f) for f in os.listdir(d)])
         for subdir in subdirs:
@@ -99,7 +99,7 @@ def worker():
 jobqueue = Queue()
 s = Scheduler()
 
-schedule.every(20).minutes.do(s.go).run()
+schedule.every(1).hour.do(s.go).run()
 schedule.every(24).hours.do(s.clear_scrapers).run()
 
 for i in range(2):

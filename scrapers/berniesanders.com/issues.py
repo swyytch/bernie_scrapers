@@ -37,6 +37,7 @@ class IssuesScraper(Scraper):
                 "title": self.html.unescape(item.title.text),
                 "created_at": parser.parse(item.pubdate.text),
                 "site": "berniesanders.com",
+                "lang": "en",
                 "article_type": "Issues",
                 "description_html": item.description.text,
                 "description": self.html.unescape(

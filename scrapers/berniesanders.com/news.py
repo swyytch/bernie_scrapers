@@ -25,7 +25,7 @@ class ArticlesScraper(Scraper):
 
     def __init__(self):
         Scraper.__init__(self)
-        self.url = "https://berniesanders.com/daily/"
+        self.url = "https://berniesanders.com/news/"
         self.html = HTMLParser()
 
     def retrieve_article(self, url):
@@ -53,18 +53,30 @@ class ArticlesScraper(Scraper):
                 "created_at": parser.parse(article.time["datetime"]),
                 "site": "berniesanders.com",
                 "lang": "en",
-                "article_type": "DemocracyDaily",
-                "excerpt_html": str(article.find(
-                    "div", {"class": "excerpt"}).p),
-                "excerpt": self.html.unescape(
-                    article.find(
-                        "div", {"class": "excerpt"}).p.text),
                 "title": article.h2.text,
                 "article_category": article.h1.string.strip(),
                 "url": article.h2.a["href"]
             }
+
+            # Pull excerpt if available
+            try:
+                rec["excerpt_html"] = str(article.p)
+                rec["excerpt"] = self.html.unescape(article.p.text)
+            except AttributeError:
+                rec["excerpt"], rec["excerpt_html"] = "", ""
+
+            # set image_url if available
             if article.img is not None:
                 rec["image_url"] = article.img["src"]
+
+            # Determine Type
+            if rec['article_category'].lower() in ["on the road", "news"]:
+                rec['article_type'] = "News"
+            elif rec['article_category'].lower() == "press release":
+                rec['article_type'] = "PressRelease"
+            else:
+                rec['article_type'] = "Unknown"
+
             query = {
                 "title": rec["title"],
                 "article_type": rec["article_type"]

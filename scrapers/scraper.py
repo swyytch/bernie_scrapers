@@ -3,6 +3,7 @@ import logging
 import requests
 import sys
 import time
+import types
 import yaml
 
 from abc import ABCMeta, abstractmethod
@@ -17,7 +18,16 @@ class Scraper(object):
     def __init__(self):
         self.configfile = "/opt/bernie/config.yml"
         self.config = self.config()
-        self.db = self.mongo()
+        self.db = self.mongo().bernie
+
+    def replace_with_newlines(self, element):
+        text = ''
+        for elem in element.recursiveChildGenerator():
+            if isinstance(elem, types.StringTypes):
+                text += elem.strip()
+            elif elem.name == 'br':
+                text += '\n'
+        return text
 
     def config(self):
         try:
@@ -38,7 +48,7 @@ class Scraper(object):
             c["password"],
             mechanism='SCRAM-SHA-1'
         )
-        return db.bernie
+        return db
 
     def get(self, url, params=False, result_format="html"):
         for x in range(3):
