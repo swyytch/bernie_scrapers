@@ -30,7 +30,8 @@ allowed_keys = [
     "attendee_count",
     "capacity",
     "site",
-    "lang"
+    "lang",
+    "event_type_name"
 ]
 
 logging.basicConfig(format="%(asctime)s - %(levelname)s : %(message)s",
