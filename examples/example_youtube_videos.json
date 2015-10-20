@@ -1,0 +1,281 @@
+{
+ "kind": "youtube#searchListResponse",
+ "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/EX-wY_vYBkKmK-57nzwDJyjXg3o\"",
+ "nextPageToken": "CAoQAA",
+ "pageInfo": {
+  "totalResults": 86,
+  "resultsPerPage": 10
+ },
+ "items": [
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/kDoEX3s7zxWCLmNQgNJOv-g7ahg\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "zvZDsBmxaPc"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-19T12:29:15.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "My Name is Larry David | Bernie in Iowa",
+    "description": "",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/zvZDsBmxaPc/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/zvZDsBmxaPc/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/zvZDsBmxaPc/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/KKk1kIf4u0upEFrS1KN8VTxlYMs\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "EiPf3dz6ljc"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-15T16:28:52.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "Seth MacFarlane Introduces Bernie Sanders in L.A.",
+    "description": "",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/EiPf3dz6ljc/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/EiPf3dz6ljc/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/EiPf3dz6ljc/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/HO6AGz2OI8OtFd2sokUxeDMBFQk\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "QdnPTKQUN80"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-14T19:59:23.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "Bernie Sanders | CNN Democratic Debate",
+    "description": "https://berniesanders.com/press-release/bernie-sanders-scores-big-win-in-first-democratic-debate/",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/QdnPTKQUN80/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/QdnPTKQUN80/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/QdnPTKQUN80/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/WDZthqCDXGnLP5iCXLifbIRO054\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "aOOfwN0iYxM"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-14T02:02:02.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "Your Damn Emails",
+    "description": "",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/aOOfwN0iYxM/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/aOOfwN0iYxM/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/aOOfwN0iYxM/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/ZgNcgbWklI_yS__4uf6yviaB0lg\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "hqgt68-ryV8"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-14T01:32:31.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "Bernie's Opening Statement",
+    "description": "",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/hqgt68-ryV8/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/hqgt68-ryV8/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/hqgt68-ryV8/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/qyRVPhZdfOGfEuwLmCBzCM7I2Xo\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "sF10LK2YLG8"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-12T20:08:19.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "Bernie Sanders Addresses No Labels",
+    "description": "",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/sF10LK2YLG8/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/sF10LK2YLG8/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/sF10LK2YLG8/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/xrp45pvH5Gaurad7DSYfQSg0ZOk\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "kHfEh1sYMlE"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-10T16:37:09.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "Bob de la Rosa Speaks at Bernie Sanders Rally in Tucson",
+    "description": "",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/kHfEh1sYMlE/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/kHfEh1sYMlE/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/kHfEh1sYMlE/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/_s0JcVbNw8z3aMQnVlJ_cwmOKE4\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "z9VtfV9i7bQ"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-08T00:12:24.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "Congressional Hispanic Caucus Institute, Washington DC",
+    "description": "",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/z9VtfV9i7bQ/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/z9VtfV9i7bQ/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/z9VtfV9i7bQ/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/5hh7gAmKnHMuNDedx1TFcjZbA0w\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "FAcv7g3O_iM"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-06T15:54:30.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "Bernie Sanders Explains Social Security",
+    "description": "Read more about Social Security on our website: https://berniesanders.com/issues/strengthen-and-expand-social-security/",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/FAcv7g3O_iM/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/FAcv7g3O_iM/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/FAcv7g3O_iM/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/W4FcXBQX5c-OqiDkwh3LXmlrSNI\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "KUafOV3oqJw"
+   },
+   "snippet": {
+    "publishedAt": "2015-10-05T13:59:01.000Z",
+    "channelId": "UCH1dpzjCEiGAt8CXkryhkZg",
+    "title": "Heads They Win, Tails You Lose",
+    "description": "",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/KUafOV3oqJw/default.jpg"
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/KUafOV3oqJw/mqdefault.jpg"
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/KUafOV3oqJw/hqdefault.jpg"
+     }
+    },
+    "channelTitle": "",
+    "liveBroadcastContent": "none"
+   }
+  }
+ ]
+}
