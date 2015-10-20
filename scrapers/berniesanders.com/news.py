@@ -87,11 +87,9 @@ class ArticlesScraper(Scraper):
                     rec["body"], rec["body_html"] = text, text
                     rec['article_type'] = "ExternalLink"
                 elif text and html:
-                    rec["body"], rec["body_html"] = text, text
-                    try:
-                        article["image_url"]
-                    except KeyError:
-                        article["image_url"] = image
+                    rec["body"], rec["body_html"] = text, html
+                    if 'image_url' not in rec:
+                        rec["image_url"] = image
                 msg = "Inserting '{0}', created {1}"
                 logging.info(msg.format(
                     rec["title"].encode("utf8"),

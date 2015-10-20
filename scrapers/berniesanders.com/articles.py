@@ -65,6 +65,7 @@ class ArticlesScraper(Scraper):
             }
             if article.img is not None:
                 rec["image_url"] = article.img["src"]
+                
             query = {
                 "title": rec["title"],
                 "article_type": rec["article_type"]
