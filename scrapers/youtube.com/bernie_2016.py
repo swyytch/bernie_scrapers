@@ -25,7 +25,7 @@ class Bernie2016VideosScraper(Scraper):
 
     def __init__(self):
         Scraper.__init__(self)
-        api_key = os.getenv("YOUTUBE_API_KEY")
+        api_key = self.config["youtube"]["api_key"]
         self.url = "https://www.googleapis.com/youtube/v3/search"
         self.params = {
           "order": "date",
