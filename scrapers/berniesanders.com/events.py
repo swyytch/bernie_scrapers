@@ -89,13 +89,12 @@ class EventScraper(Scraper):
         result["lang"] = "en"
         # convert capacity and attendee_count to int's
         for x in ["capacity", "attendee_count"]:
-            try:
+            if x in result:
                 result[x] = int(result[x])
-            except KeyError:
-                pass
 
         # Convert str to datetime
         result["start_time"] = parser.parse(result["start_time"])
+        result["event_date"] = result["start_time"].date()
         result["is_official"] = result["is_official"] == "1"
         # remove any unneeded keys
         keys = result.keys()

@@ -99,7 +99,7 @@ def worker():
 jobqueue = Queue()
 s = Scheduler()
 
-schedule.every(1).hour.do(s.go).run()
+schedule.every(20).minutes.do(s.go).run()
 schedule.every(24).hours.do(s.clear_scrapers).run()
 
 for i in range(2):
