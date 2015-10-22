@@ -31,7 +31,8 @@ allowed_keys = [
     "capacity",
     "site",
     "lang",
-    "event_type_name"
+    "event_type_name",
+    "event_date"
 ]
 
 logging.basicConfig(format="%(asctime)s - %(levelname)s : %(message)s",
