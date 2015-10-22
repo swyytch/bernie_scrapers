@@ -95,9 +95,7 @@ class EventScraper(Scraper):
 
         # Convert str to datetime
         result["start_time"] = parser.parse(result["start_time"])
-        result["event_date"] = result["start_time"].replace(
-            hour=0, minute=0, second=0
-        )
+        result["event_date"] = str(result["start_time"].date())
         result["is_official"] = result["is_official"] == "1"
         # remove any unneeded keys
         keys = result.keys()
