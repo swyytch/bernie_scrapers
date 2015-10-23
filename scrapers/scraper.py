@@ -7,7 +7,7 @@ import types
 import yaml
 
 from abc import ABCMeta, abstractmethod
-from BeautifulSoup import BeautifulSoup
+from BeautifulSoup import BeautifulSoup, Comment
 from pymongo import MongoClient
 
 
@@ -16,10 +16,23 @@ class Scraper(object):
     __metaclass__ = ABCMeta
 
     def __init__(self):
-        self.configfile = "/opt/bernie/config.yml"
-        self.config = self.config()
         self.db = self.mongo().bernie
 
+    def sanitize_soup(self, soup):
+      # inspired by https://chase-seibert.github.io/blog/2011/01/28/sanitize-html-with-beautiful-soup.html  
+
+      blacklist = ["script", "noscript", "video"]
+
+      for tag in soup.findAll():
+        if tag.name.lower() in blacklist:
+            tag.extract()
+
+      comments = soup.findAll(text=lambda text:isinstance(text, Comment))
+      for comment in comments:
+          comment.extract()
+
+      return soup
+    
     def replace_with_newlines(self, element):
         text = ''
         for elem in element.recursiveChildGenerator():

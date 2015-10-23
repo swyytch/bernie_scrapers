@@ -35,6 +35,7 @@ class ArticlesScraper(Scraper):
                 return r.url, False, False
             if r.status_code == 200:
                 soup = BeautifulSoup(r.text)
+                soup = self.sanitize_soup(soup)
                 image = soup.find('meta', {'property': 'og:image'})['content']
                 content = soup.article
                 paragraphs = [self.html.unescape(self.replace_with_newlines(p))

@@ -49,6 +49,7 @@ class IssuesScraper(Scraper):
 
     def retrieve(self, rec):
         soup = self.get(rec["url"]).find("section", {"id": "content"})
+        soup = self.sanitize_soup(soup)
         while soup.article.style is not None:
             soup.article.style.extract()
         rec["body_html"] = str(soup.article)
