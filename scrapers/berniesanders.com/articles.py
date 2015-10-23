@@ -67,27 +67,34 @@ class ArticlesScraper(Scraper):
             if article.img is not None:
                 rec["image_url"] = article.img["src"]
 
+            text, html, image = self.retrieve_article(rec["url"])
+            if text and not html:
+                rec["body"], rec["body_html"] = text, text
+                rec['article_type'] = "ExternalLink"
+            elif text and html:
+                rec["body"], rec["body_html"] = text, text
+                try:
+                    article["image_url"]
+                except KeyError:
+                    article["image_url"] = image
+
             query = {
                 "title": rec["title"],
                 "article_type": rec["article_type"]
             }
+
+            msg = ""
             if not self.db.articles.find(query).limit(1).count():
-                text, html, image = self.retrieve_article(rec["url"])
-                if text and not html:
-                    rec["body"], rec["body_html"] = text, text
-                    rec['article_type'] = "ExternalLink"
-                elif text and html:
-                    rec["body"], rec["body_html"] = text, text
-                    try:
-                        article["image_url"]
-                    except KeyError:
-                        article["image_url"] = image
                 msg = "Inserting '{0}', created {1}"
-                logging.info(msg.format(
-                    rec["title"].encode("utf8"),
-                    str(rec["created_at"])
-                ))
                 self.db.articles.insert_one(rec)
+            else:
+                msg = "Updating '{0}', created {1}"
+                self.db.articles.update_one(query, {"$set": rec})
+
+            logging.info(msg.format(
+                rec["title"].encode("utf8"),
+                str(rec["created_at"])
+            ))
 
 if __name__ == "__main__":
     bernie = ArticlesScraper()
