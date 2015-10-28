@@ -53,8 +53,8 @@ class ArticlesScraper(Scraper):
                 "created_at": parser.parse(article.time["datetime"]),
                 "site": "berniesanders.com",
                 "lang": "en",
-                "title": article.h2.text,
-                "article_category": article.h1.string.strip(),
+                "title": self.html.unescape(article.h2.text),
+                "article_category": self.html.unescape(article.h1.string.strip()),
                 "url": article.h2.a["href"]
             }
 

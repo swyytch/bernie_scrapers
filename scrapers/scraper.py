@@ -22,8 +22,7 @@ class Scraper(object):
 
     def sanitize_soup(self, soup):
         # inspired by https://chase-seibert.github.io/blog/2011/01/28/sanitize-html-with-beautiful-soup.html  
-
-        blacklist = ["script", "noscript", "video"]
+        blacklist = ["script", "noscript", "video", "style"]
 
         for tag in soup.findAll():
             if tag.name.lower() in blacklist:
@@ -39,7 +38,7 @@ class Scraper(object):
         text = ''
         for elem in element.recursiveChildGenerator():
             if isinstance(elem, types.StringTypes):
-                text += elem.strip()
+                text += elem.rstrip("\n")
             elif elem.name == 'br':
                 text += '\n'
         return text
