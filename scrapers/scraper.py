@@ -22,7 +22,7 @@ class Scraper(object):
 
     def sanitize_soup(self, soup):
         # inspired by https://chase-seibert.github.io/blog/2011/01/28/sanitize-html-with-beautiful-soup.html  
-        blacklist = ["script", "noscript", "video", "style"]
+        blacklist = ["script", "noscript", "video"]
 
         for tag in soup.findAll():
             if tag.name.lower() in blacklist:
