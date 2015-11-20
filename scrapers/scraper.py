@@ -34,6 +34,11 @@ class Scraper(object):
 
         return soup
 
+    def remove_style(self, soup):
+        for style in soup.findAll("style"):
+            style.extract()
+        return soup
+
     def replace_with_newlines(self, element):
         text = ''
         for elem in element.recursiveChildGenerator():
