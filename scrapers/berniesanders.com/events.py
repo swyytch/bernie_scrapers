@@ -112,6 +112,7 @@ class EventScraper(Scraper):
         )
         for result in r["results"]:
             rec = self.translate(result)
+            rec = self.retrieve_full_description(rec)
             query = {
                 "original_id": rec["original_id"],
                 "site": "berniesanders.com"
@@ -125,6 +126,17 @@ class EventScraper(Scraper):
                 logging.info(msg.format(rec["name"]))
                 rec["inserted_at"] = datetime.now()
                 self.db.events.insert_one(rec)
+    
+    def retrieve_full_description(self, rec):
+        url = rec["url"]
+        msg = "Fetching description for {0}"
+        logging.info(msg.format(url))
+        soup = self.get(url).find("div", {"class": "description"})
+        soup = self.sanitize_soup(soup)
+        paragraphs = [self.html.unescape(self.replace_with_newlines(p)) for p in soup.findAll("p")]
+        description = "\n\n".join(paragraphs)
+        rec["description"] = description
+        return rec
 
 if __name__ == "__main__":
     bernie = EventScraper()
