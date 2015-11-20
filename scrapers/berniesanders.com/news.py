@@ -87,6 +87,10 @@ class ArticlesScraper(Scraper):
                 rec['article_type'] = "ExternalLink"
             elif text and html:
                 rec["body"], rec["body_html"] = text, html
+
+                no_style = self.remove_style(BeautifulSoup(html))
+                rec["body_html_nostyle"] = "".join([str(p) for p in no_style.findAll("p")])
+
                 if 'image_url' not in rec:
                     rec["image_url"] = image
 
