@@ -61,7 +61,8 @@ class ArticlesScraper(Scraper):
                     article.find(
                         "div", {"class": "excerpt"}).p.text),
                 "title": self.html.unescape(article.h2.text),
-                "article_category": self.html.unescape(article.h1.string.strip()),
+                "article_category":
+                    self.html.unescape(article.h1.string.strip()),
                 "url": article.h2.a["href"]
             }
             if article.img is not None:
@@ -72,7 +73,8 @@ class ArticlesScraper(Scraper):
                 rec["body"], rec["body_html"] = text, text
                 rec['article_type'] = "ExternalLink"
             elif text and html:
-                rec["body"], rec["body_html"] = text, text
+                rec["body"], rec["body_html"] = text, html
+                rec["unstyled_html"] = self.remove_style(BeautifulSoup(html))
                 try:
                     article["image_url"]
                 except KeyError:
