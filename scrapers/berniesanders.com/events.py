@@ -2,6 +2,11 @@
 
 import logging
 
+import time
+import calendar
+import hmac, hashlib
+import urllib
+
 from datetime import datetime
 from dateutil import parser
 from HTMLParser import HTMLParser
@@ -40,10 +45,13 @@ logging.basicConfig(format="%(asctime)s - %(levelname)s : %(message)s",
 
 
 class EventScraper(Scraper):
-
     def __init__(self):
         Scraper.__init__(self)
-        self.url = "https://go.berniesanders.com/page/event/search_results"
+        c = self.config["bsd"]
+        endpoint = c["endpoint"]
+        api_id = c["api_id"]
+        api_secret = c["api_secret"]
+        self.url = self.generate_bsd_url(endpoint, "/page/api/event/search_events", api_id, api_secret)
         self.html = HTMLParser()
         self.params = {
             'orderby': 'zip_radius',
@@ -54,9 +62,31 @@ class EventScraper(Scraper):
             'format': 'json'
         }
         self.map = {
-            "id": "original_id",
+            "event_id": "original_id",
             "start_dt": "start_time"
         }
+
+    def generate_bsd_url(self, endpoint, call_path, api_id, api_secret, params={}):
+      timestamp = str(calendar.timegm(time.gmtime()))
+      params["api_ver"] = "2"
+      params["api_id"] = api_id
+      params["api_ts"] = timestamp
+   
+      unencoded_query_string = "&".join([key + "=" + str(params[key]) for key in params])
+      signing_string = "\n".join([
+        params["api_id"],
+        params["api_ts"],
+        call_path,
+        unencoded_query_string
+      ])
+      
+      api_mac = hmac.new(api_secret.encode(), signing_string.encode(), hashlib.sha1).hexdigest()
+      params["api_mac"] = api_mac
+      
+      unencoded_query_string = "&".join([key + "=" + str(params[key]) for key in params])
+      encoded_query_string = urllib.quote(unencoded_query_string, safe="=&")
+      
+      return endpoint + call_path + "?" + encoded_query_string
 
     def translate(self, result):
         # Translate normal key names based on map
@@ -90,7 +120,7 @@ class EventScraper(Scraper):
         result["lang"] = "en"
         # convert capacity and attendee_count to int's
         for x in ["capacity", "attendee_count"]:
-            if x in result:
+            if x in result and result[x] != None:
                 result[x] = int(result[x])
 
         # Convert str to datetime
@@ -107,12 +137,10 @@ class EventScraper(Scraper):
     def go(self):
         r = self.get(
             self.url,
-            params=self.params,
             result_format="json"
         )
-        for result in r["results"]:
+        for result in r:
             rec = self.translate(result)
-            rec = self.retrieve_full_description(rec)
             query = {
                 "original_id": rec["original_id"],
                 "site": "berniesanders.com"
@@ -126,17 +154,6 @@ class EventScraper(Scraper):
                 logging.info(msg.format(rec["name"]))
                 rec["inserted_at"] = datetime.now()
                 self.db.events.insert_one(rec)
-    
-    def retrieve_full_description(self, rec):
-        url = rec["url"]
-        msg = "Fetching description for {0}"
-        logging.info(msg.format(url))
-        soup = self.get(url).find("div", {"class": "description"})
-        soup = self.sanitize_soup(soup)
-        paragraphs = [self.html.unescape(self.replace_with_newlines(p)) for p in soup.findAll("p")]
-        description = "\n\n".join(paragraphs)
-        rec["description"] = description
-        return rec
 
 if __name__ == "__main__":
     bernie = EventScraper()
